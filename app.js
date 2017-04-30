@@ -3,15 +3,16 @@ import { View, Text, StyleSheet } from "react-native";
 
 import { NativeRouter, Route, Link } from "react-router-native";
 
-import Header from "./components/Header";
 import HeaderHome from "./components/HeaderHome";
 import { Klant, Project, Tijdsduur } from "./components/index";
+
 export default class App extends Component {
 
   state = {
     filter: 'home',
     value: '',
     items: [],
+    time: 0,
   };
 
 
@@ -43,11 +44,12 @@ export default class App extends Component {
     return (
       <NativeRouter>
         <View style={styles.container}>
-          <Route exact path="/" component={HeaderHome}/>
-          <Route path="/klant" component={Klant}/>
+          <Route exact path="/" component={HeaderHome} startTime={this.state.time}/>
             <Route path="/project" component={Project}/>
             <Route path="/tijdsduur" component={Tijdsduur}/>
-          <View style={styles.content}>
+
+        <View style={styles.content}>
+            <Route path="/klant" component={Klant}/>
 
           </View>
           <View style={styles.nav}>
