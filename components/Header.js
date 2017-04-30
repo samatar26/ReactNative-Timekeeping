@@ -33,3 +33,9 @@ const styles = StyleSheet.create({
   },
 
 });
+
+// <Header
+//   value={this.state.value}
+//   onAddItem={this.handleAddItem}
+//   onChange={(value) => this.setState({value})}
+//  />
