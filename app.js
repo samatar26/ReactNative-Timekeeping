@@ -1,11 +1,13 @@
 import React, { Component } from "react";
-import { View, Text, StyleSheet } from "react-native";
+import { View, Text, ScrollView, StyleSheet } from "react-native";
 
 import { NativeRouter, Route, Link } from "react-router-native";
+import Realm from 'realm';
 
 import HeaderHome from "./components/HeaderHome";
 import { Klant, Project, Tijdsduur } from "./components/index";
-import Realm from 'realm';
+
+
 export default class App extends Component {
 
   state = {
@@ -72,10 +74,10 @@ export default class App extends Component {
             <Route path="/project" component={Project}/>
             <Route path="/tijdsduur" component={Tijdsduur}/>
 
-        <View style={styles.content}>
+        <ScrollView style={styles.content}>
             <Route path="/klant" component={Klant}/>
 
-          </View>
+          </ScrollView>
           <View style={styles.nav}>
             <Link
               style={styles.navItem}

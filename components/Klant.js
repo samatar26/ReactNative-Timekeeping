@@ -42,6 +42,9 @@ export const Klant = () => (
                blurOnSubmit={false}
                returnKeyType="next"
               />
+            <TouchableOpacity style={styles.button}>
+              <Text style={styles.buttonText}>Submit</Text>
+            </TouchableOpacity>
 
   </View>
 )
@@ -57,11 +60,19 @@ const styles = StyleSheet.create({
 
   },
   input: {
-    // flex: 1,
-    // backgroundColor: "blue",
     marginVertical: 10,
     height: 50,
     width: "100%"
-  }
+  },
+  button: {
+    padding: 8,
+    borderRadius: 5,
+    borderWidth: 1,
+    borderColor: "rgba(24, 60, 18, .4 )",
+  },
+  buttonText: {
+    fontSize: 20,
+    fontWeight: "800"
+  },
 
 });
