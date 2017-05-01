@@ -44,7 +44,7 @@ export default class App extends Component {
     return (
       <NativeRouter>
         <View style={styles.container}>
-          <Route exact path="/" component={HeaderHome} startTime={this.state.time}/>
+          <Route exact path="/"  render={()=><HeaderHome startTime={this.state.time}/>}/>
             <Route path="/project" component={Project}/>
             <Route path="/tijdsduur" component={Tijdsduur}/>
 

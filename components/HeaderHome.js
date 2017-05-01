@@ -3,7 +3,6 @@ import { View, Text, StyleSheet, TextInput, TouchableOpacity } from "react-nativ
 
 export default class HeaderHome extends Component {
   render() {
-    console.log(this.props)
     return (
       <View style={styles.header}>
         <TouchableOpacity style={styles.button} onPress={()=>{console.log(this.props.startTime)}}>
