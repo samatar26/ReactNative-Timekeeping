@@ -5,7 +5,7 @@ import { NativeRouter, Route, Link } from "react-router-native";
 
 import HeaderHome from "./components/HeaderHome";
 import { Klant, Project, Tijdsduur } from "./components/index";
-
+import Realm from 'realm';
 export default class App extends Component {
 
   state = {
