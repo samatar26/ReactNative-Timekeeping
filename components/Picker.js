@@ -5,16 +5,15 @@ import {
   StyleSheet,
   Picker
 } from 'react-native';
-import Realm from 'realm';
-export const PickerComponent = (props) => (
-  <Picker style={styles.picker} o={()=>{ let realm = new Realm({schema: ['Klant']});
+import realm from './../database/Realm';
+import {generateId} from './../lib/utils';
 
-      let klanten = realm.objects('Klant');
-
-      console.log(Array.from(klanten));
-}}>
-    <Picker.Item label="Java" value="java" />
-    <Picker.Item label="JavaScript" value="js" />
+export const PickerComponent = () => (
+  <Picker style={styles.picker}>
+    {Array.from(realm.objects('Klant')).map((klant)=>{
+      console.log(klant);
+      return <Picker.Item key={generateId()} label={klant.voornaam+' ' + klant.achternaam} value={'a'} />;
+    })}
   </Picker>
 
 );
