@@ -13,6 +13,8 @@ export default class App extends Component {
     value: '',
     items: [],
     time: 0,
+    timerStart: true,
+    timerButtonText: 'Start',
   };
 
 
@@ -22,12 +24,25 @@ export default class App extends Component {
   };
 
   handleTimings = () => {
-    let startTime = this.state.time;
-    setInterval(function () {
-      this.setState({
-        time: startTime+=1
-      });
-    }.bind(this), 1000);
+    if (this.state.timerStart){
+      let startTime = this.state.time;
+      var myInterval = setInterval(function () {
+        this.setState({
+          time: startTime+=1
+        });
+      }.bind(this), 1000);
+
+      this.setState({timerStart: false, intervalId: myInterval});
+
+    } else {
+      clearInterval(this.state.intervalId);
+      this.setState({timerStart: true});
+    }
+  }
+
+  handleButtonText = () => {
+    let buttonText = this.state.timerButtonText;
+    this.setState({timerButtonText: buttonText = buttonText === 'Start' ? 'Stop' : 'Start' });
   }
 
 
@@ -53,7 +68,7 @@ export default class App extends Component {
     return (
       <NativeRouter>
         <View style={styles.container}>
-          <Route exact path="/"  render={()=><HeaderHome handleTimings={this.handleTimings} startTime={this.state.time}/>}/>
+          <Route exact path="/"  render={()=><HeaderHome handleTimings={this.handleTimings} startTime={this.state.time} ButtonText={this.state.timerButtonText} changeButtonText={this.handleButtonText}/>}/>
             <Route path="/project" component={Project}/>
             <Route path="/tijdsduur" component={Tijdsduur}/>
 

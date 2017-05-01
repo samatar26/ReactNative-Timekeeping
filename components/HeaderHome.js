@@ -1,12 +1,13 @@
 import React, { Component } from "react";
 import { View, Text, StyleSheet, TextInput, TouchableOpacity } from "react-native";
+import PropTypes from 'prop-types';
 
 export default class HeaderHome extends Component {
   render() {
     return (
       <View style={styles.header}>
-        <TouchableOpacity style={styles.button} onPress={this.props.handleTimings}>
-          <Text style={styles.text}>Start</Text>
+        <TouchableOpacity style={styles.button} onPress={this.props.handleTimings, this.props.changeButtonText}>
+          <Text style={styles.text}>{this.props.ButtonText}</Text>
         </TouchableOpacity>
       </View>
     );
@@ -36,3 +37,9 @@ const styles = StyleSheet.create({
   },
 
 });
+
+HeaderHome.propTypes = {
+  ButtonText: PropTypes.string,
+  handleTimings: PropTypes.func,
+  changeButtonText: PropTypes.func
+};
