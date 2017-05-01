@@ -9,6 +9,7 @@ export const Klant = () => (
     <Text>VoorNaam</Text>
     <TextInput style={styles.input}
       placeholder="What needs to be done?"
+      blurOnSubmit={false}
       returnKeyType="next"
      />
     <Text>Achternaam</Text>
@@ -47,12 +48,13 @@ export const Klant = () => (
 
 const styles = StyleSheet.create({
   header: {
-    paddingHorizontal: 20,
+    paddingHorizontal: 40,
     height: "100%",
     flexDirection: "column",
     justifyContent: "flex-start",
     alignItems: "center",
-    backgroundColor: "yellow"
+    backgroundColor: "yellow",
+
   },
   input: {
     // flex: 1,

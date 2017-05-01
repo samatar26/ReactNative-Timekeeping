@@ -5,7 +5,7 @@ export default class HeaderHome extends Component {
   render() {
     return (
       <View style={styles.header}>
-        <TouchableOpacity style={styles.button} onPress={()=>{console.log(this.props.startTime)}}>
+        <TouchableOpacity style={styles.button} onPress={this.props.handleTimings}>
           <Text style={styles.text}>Start</Text>
         </TouchableOpacity>
       </View>

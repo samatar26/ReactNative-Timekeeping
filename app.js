@@ -21,6 +21,15 @@ export default class App extends Component {
     this.setState({filter});
   };
 
+  handleTimings = () => {
+    let startTime = this.state.time;
+    setInterval(function () {
+      this.setState({
+        time: startTime+=1
+      });
+    }.bind(this), 1000);
+  }
+
 
   handleAddItem = () => {
     console.log(this.state);
@@ -44,7 +53,7 @@ export default class App extends Component {
     return (
       <NativeRouter>
         <View style={styles.container}>
-          <Route exact path="/"  render={()=><HeaderHome startTime={this.state.time}/>}/>
+          <Route exact path="/"  render={()=><HeaderHome handleTimings={this.handleTimings} startTime={this.state.time}/>}/>
             <Route path="/project" component={Project}/>
             <Route path="/tijdsduur" component={Tijdsduur}/>
 
