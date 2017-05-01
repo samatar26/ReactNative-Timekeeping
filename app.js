@@ -118,10 +118,11 @@ export default class App extends Component {
       <NativeRouter>
         <View style={styles.container}>
           <Route exact path="/"  render={()=><HeaderHome handleTimings={this.handleTimings} startTime={this.state.time} ButtonText={this.state.timerButtonText} changeButtonText={this.handleButtonText}/>}/>
-            <Route path="/project" component={Project}/>
             <Route path="/tijdsduur" component={Tijdsduur}/>
 
         <ScrollView style={styles.content}>
+          <Route path="/project" component={Project}/>
+
             <Route path="/klant" render={()=><Klant
                 form={this.state.form}
                 realmDatabase={this.realmDatabase}
