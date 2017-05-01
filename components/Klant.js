@@ -50,7 +50,10 @@ export default class Klant extends Component {
                    blurOnSubmit={false}
                    returnKeyType="next"
                   />
-                <TouchableOpacity style={styles.button} >
+                <TouchableOpacity
+                   style={styles.button}
+                   onPress={()=>console.log(this.props)}
+                    >
                   <Text style={styles.buttonText}>Submit</Text>
                 </TouchableOpacity>
 

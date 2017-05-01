@@ -17,12 +17,15 @@ export default class App extends Component {
     time: 0,
     timerStart: true,
     timerButtonText: 'Start',
-    voornaam:'',
-    achternaam: '',
-    adres: '',
-    huisnummer: '',
-    postcode: '',
-    woonplaats: '',
+    form:{
+      voornaam:'',
+      achternaam: '',
+      adres: '',
+      huisnummer: '',
+      postcode: '',
+      woonplaats: '',
+    },
+
 
 
   };
@@ -30,7 +33,9 @@ export default class App extends Component {
 
   handleFormUpdate = (formValue, state) => {
     console.log(this.state);
-    this.setState({[state]:formValue});
+    const form = this.state.form;
+    form[state] = formValue;
+    this.setState({form});
   }
 
 
@@ -92,7 +97,9 @@ export default class App extends Component {
             <Route path="/tijdsduur" component={Tijdsduur}/>
 
         <ScrollView style={styles.content}>
-            <Route path="/klant" render={()=><Klant voornaam={this.state.voornaam} updateForm={this.handleFormUpdate}/>}/>
+            <Route path="/klant" render={()=><Klant
+                form={this.state.form}
+               updateForm={this.handleFormUpdate}/>}/>
 
           </ScrollView>
           <View style={styles.nav}>
