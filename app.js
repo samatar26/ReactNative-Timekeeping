@@ -2,11 +2,13 @@ import React, { Component } from "react";
 import { View, Text, ScrollView, StyleSheet } from "react-native";
 
 import { NativeRouter, Route, Link } from "react-router-native";
-import Realm from 'realm';
+import realm from './database/Realm';
 
 import HeaderHome from "./components/HeaderHome";
-import { Project, Tijdsduur } from "./components/index";
+import {Tijdsduur } from "./components/index";
 import Klant from './components/Klant.js';
+import Project from './components/Project.js';
+
 
 export default class App extends Component {
 
@@ -39,24 +41,13 @@ export default class App extends Component {
     this.setState({form});
   }
 
-  realmDatabase = (form) => {
+  getRealmData = () => {
+
+  }
+
+  ClientToDatabase = (form) => {
     const {achternaam, voornaam, adres,
     woonplaats, huisnummer, postcode} = form;
-    console.log(achternaam, form);
-    class Klant {}
-    Klant.schema = {
-      name: 'Klant',
-      properties: {
-        id: 'int',
-        voornaam: 'string',
-        achternaam: 'string',
-        adres: 'string',
-        huisnummer: 'string',
-        postcode: 'string',
-        woonplaats: 'string'
-      }
-    };
-    let realm = new Realm({schema: [Klant]});
     realm.write(()=>{
       let mijnKlant = realm.create('Klant', { id:this.state.id, voornaam, achternaam, adres, woonplaats, huisnummer, postcode});
     });
@@ -121,11 +112,12 @@ export default class App extends Component {
             <Route path="/tijdsduur" component={Tijdsduur}/>
 
         <ScrollView style={styles.content}>
-          <Route path="/project" component={Project}/>
+          <Route path="/project" render={()=><Project                 realmDatabase={this.ClientToDatabase}
+ />}/>
 
             <Route path="/klant" render={()=><Klant
                 form={this.state.form}
-                realmDatabase={this.realmDatabase}
+                realmDatabase={this.ClientToDatabase}
                updateForm={this.handleFormUpdate}/>}/>
 
           </ScrollView>

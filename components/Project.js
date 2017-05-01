@@ -1,25 +1,29 @@
-import React from 'react';
+import React, {Component} from 'react';
 import { View, Text, StyleSheet, TextInput, TouchableOpacity} from "react-native";
 import {PickerComponent} from './Picker';
 
-export const Project = () => (
-  <View style={styles.header}>
-    <Text>ProjectNaam</Text>
-    <TextInput
-      style={styles.input}
-      placeholder="Enter"
-      blurOnSubmit={false}
-      returnKeyType="next"
-     />
-   <PickerComponent/>
-     <TouchableOpacity
-       style={styles.button}
-        onPress={()=>{this.props.realmDatabase(this.props.form)}}
-         >
-       <Text style={styles.buttonText}>Submit</Text>
-     </TouchableOpacity>
-  </View>
-)
+export default class Project extends Component{
+  render() {
+    return(
+      <View style={styles.header}>
+        <Text>ProjectNaam</Text>
+        <TextInput
+          style={styles.input}
+          placeholder="Enter"
+          blurOnSubmit={false}
+          returnKeyType="next"
+          />
+        <PickerComponent realmData={this.props.realmDatabase} />
+        <TouchableOpacity
+          style={styles.button}
+          onPress={()=>{}}
+          >
+          <Text style={styles.buttonText}>Submit</Text>
+        </TouchableOpacity>
+      </View>
+    )
+  }
+}
 
 const styles = StyleSheet.create({
   header: {
