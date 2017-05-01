@@ -52,7 +52,7 @@ export default class Klant extends Component {
                   />
                 <TouchableOpacity
                    style={styles.button}
-                   onPress={()=>console.log(this.props)}
+                   onPress={()=>{this.props.realmDatabase(this.props.form)}}
                     >
                   <Text style={styles.buttonText}>Submit</Text>
                 </TouchableOpacity>
@@ -92,4 +92,5 @@ const styles = StyleSheet.create({
 
 Klant.propTypes = {
   updateForm: PropTypes.func,
+  realmDatabase: PropTypes.func
 };

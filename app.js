@@ -25,6 +25,7 @@ export default class App extends Component {
       postcode: '',
       woonplaats: '',
     },
+    id:1,
 
 
 
@@ -38,7 +39,31 @@ export default class App extends Component {
     this.setState({form});
   }
 
+  realmDatabase = (form) => {
+    const {achternaam, voornaam, adres,
+    woonplaats, huisnummer, postcode} = form;
+    console.log(achternaam, form);
+    class Klant {}
+    Klant.schema = {
+      name: 'Klant',
+      properties: {
+        id: 'int',
+        voornaam: 'string',
+        achternaam: 'string',
+        adres: 'string',
+        huisnummer: 'string',
+        postcode: 'string',
+        woonplaats: 'string'
+      }
+    };
+    let realm = new Realm({schema: [Klant]});
+    realm.write(()=>{
+      let mijnKlant = realm.create('Klant', { id:this.state.id, voornaam, achternaam, adres, woonplaats, huisnummer, postcode});
+    });
+    let klanten = realm.objects('Klant');
+    console.log(Array.from(klanten));
 
+  }
 
   handleFilter = (filter) => {
     console.log(this.state);
@@ -99,6 +124,7 @@ export default class App extends Component {
         <ScrollView style={styles.content}>
             <Route path="/klant" render={()=><Klant
                 form={this.state.form}
+                realmDatabase={this.realmDatabase}
                updateForm={this.handleFormUpdate}/>}/>
 
           </ScrollView>
