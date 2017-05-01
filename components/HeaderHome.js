@@ -1,12 +1,12 @@
 import React, { Component } from "react";
-import { View, Text, StyleSheet, TextInput, TouchableOpacity } from "react-native";
+import { View, Text, StyleSheet, TouchableOpacity } from "react-native";
 import PropTypes from 'prop-types';
 
 export default class HeaderHome extends Component {
   render() {
     return (
       <View style={styles.header}>
-        <TouchableOpacity style={styles.button} onPress={this.props.handleTimings, this.props.changeButtonText}>
+        <TouchableOpacity style={styles.button} onPress={()=>{this.props.handleTimings(); this.props.changeButtonText();}}>
           <Text style={styles.text}>{this.props.ButtonText}</Text>
         </TouchableOpacity>
       </View>
@@ -19,6 +19,7 @@ const styles = StyleSheet.create({
     borderRadius: 5,
     borderWidth: 1,
     borderColor: "rgba(24, 60, 18, .4 )",
+
   },
   text: {
     fontSize: 55,
@@ -27,13 +28,15 @@ const styles = StyleSheet.create({
 
   header: {
     paddingHorizontal: 16,
+    height: "90%",
     position: "absolute",
+    zIndex: 0,
     top: 0,
     left: 0,
     right: 0,
     bottom: 0,
     justifyContent: "center",
-    alignItems: "center"
+    alignItems: "center",
   },
 
 });

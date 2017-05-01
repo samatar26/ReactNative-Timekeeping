@@ -1,53 +1,63 @@
 import React, { Component } from "react";
 import { View, Text, StyleSheet, TextInput, TouchableOpacity } from "react-native";
+import PropTypes from 'prop-types';
 
 
+export default class Klant extends Component {
+  render() {
+    return (
+      <View style={styles.header}>
 
-export const Klant = () => (
-  <View style={styles.header}>
-
-    <Text>VoorNaam</Text>
-    <TextInput style={styles.input}
-      placeholder="What needs to be done?"
-      blurOnSubmit={false}
-      returnKeyType="next"
-     />
-    <Text>Achternaam</Text>
-     <TextInput style={styles.input}
-       placeholder="What needs to be next?"
-       blurOnSubmit={false}
-       returnKeyType="next"
-      />
-    <Text>Adres</Text>
-      <TextInput style={styles.input}
-        placeholder="What needs to be next?"
-        blurOnSubmit={false}
-        returnKeyType="next"
-       />
-     <Text>Huisnummer</Text>
-       <TextInput style={styles.input}
-         placeholder="What needs to be next?"
-         blurOnSubmit={false}
-         returnKeyType="next"
-        />
-      <Text>Postcode</Text>
+        <Text>Voornaam</Text>
+        <TextInput style={styles.input}
+          placeholder="What needs to be done?"
+          onChangeText={(voornaam)=>this.props.updateForm(voornaam, 'voornaam')}
+          blurOnSubmit={false}
+          returnKeyType="next"
+         />
+        <Text>Achternaam</Text>
+         <TextInput style={styles.input}
+           placeholder="What needs to be next?"
+           onChangeText={(achternaam)=> this.props.updateForm(achternaam, 'achternaam')}
+           blurOnSubmit={false}
+           returnKeyType="next"
+          />
+        <Text>Adres</Text>
           <TextInput style={styles.input}
             placeholder="What needs to be next?"
+            onChangeText={(adres)=> this.props.updateForm(adres, 'adres')}
             blurOnSubmit={false}
             returnKeyType="next"
            />
-      <Text>Woonplaats</Text>
-     <TextInput style={styles.input}
-               placeholder="What needs to be done?"
-               blurOnSubmit={false}
-               returnKeyType="next"
-              />
-            <TouchableOpacity style={styles.button}>
-              <Text style={styles.buttonText}>Submit</Text>
-            </TouchableOpacity>
+         <Text>Huisnummer</Text>
+           <TextInput style={styles.input}
+             placeholder="What needs to be next?"
+             onChangeText={(huisnummer)=> this.props.updateForm(huisnummer, 'huisnummer')}
+             blurOnSubmit={false}
+             returnKeyType="next"
+            />
+          <Text>Postcode</Text>
+              <TextInput style={styles.input}
+                placeholder="What needs to be next?"
+                onChangeText={(postcode)=> this.props.updateForm(postcode, 'postcode')}
+                blurOnSubmit={false}
+                returnKeyType="next"
+               />
+          <Text>Woonplaats</Text>
+         <TextInput style={styles.input}
+                   placeholder="What needs to be done?"
+                   onChangeText={(woonplaats)=>this.props.updateForm(woonplaats, 'woonplaats')}
+                   blurOnSubmit={false}
+                   returnKeyType="next"
+                  />
+                <TouchableOpacity style={styles.button} >
+                  <Text style={styles.buttonText}>Submit</Text>
+                </TouchableOpacity>
 
-  </View>
-)
+      </View>
+    );
+  }
+}
 
 const styles = StyleSheet.create({
   header: {
@@ -76,3 +86,7 @@ const styles = StyleSheet.create({
   },
 
 });
+
+Klant.propTypes = {
+  updateForm: PropTypes.func,
+};

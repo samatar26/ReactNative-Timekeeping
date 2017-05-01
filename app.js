@@ -5,8 +5,8 @@ import { NativeRouter, Route, Link } from "react-router-native";
 import Realm from 'realm';
 
 import HeaderHome from "./components/HeaderHome";
-import { Klant, Project, Tijdsduur } from "./components/index";
-
+import { Project, Tijdsduur } from "./components/index";
+import Klant from './components/Klant.js';
 
 export default class App extends Component {
 
@@ -17,7 +17,22 @@ export default class App extends Component {
     time: 0,
     timerStart: true,
     timerButtonText: 'Start',
+    voornaam:'',
+    achternaam: '',
+    adres: '',
+    huisnummer: '',
+    postcode: '',
+    woonplaats: '',
+
+
   };
+
+
+  handleFormUpdate = (formValue, state) => {
+    console.log(this.state);
+    this.setState({[state]:formValue});
+  }
+
 
 
   handleFilter = (filter) => {
@@ -26,6 +41,8 @@ export default class App extends Component {
   };
 
   handleTimings = () => {
+    console.log(this.state.time);
+
     if (this.state.timerStart){
       let startTime = this.state.time;
       var myInterval = setInterval(function () {
@@ -75,7 +92,7 @@ export default class App extends Component {
             <Route path="/tijdsduur" component={Tijdsduur}/>
 
         <ScrollView style={styles.content}>
-            <Route path="/klant" component={Klant}/>
+            <Route path="/klant" render={()=><Klant voornaam={this.state.voornaam} updateForm={this.handleFormUpdate}/>}/>
 
           </ScrollView>
           <View style={styles.nav}>
