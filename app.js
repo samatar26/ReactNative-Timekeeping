@@ -6,8 +6,9 @@ import realm from './database/Realm';
 
 import HeaderHome from "./components/HeaderHome";
 import {Tijdsduur } from "./components/index";
-import Klant from './components/Klant.js';
+import AddKlant from "./components/AddKlant.js";
 import Project from './components/Project.js';
+import {KlantMain} from './components/KlantMain.js';
 
 
 export default class App extends Component {
@@ -110,12 +111,14 @@ export default class App extends Component {
         <View style={styles.container}>
           <Route exact path="/"  render={()=><HeaderHome handleTimings={this.handleTimings} startTime={this.state.time} ButtonText={this.state.timerButtonText} changeButtonText={this.handleButtonText}/>}/>
             <Route path="/tijdsduur" component={Tijdsduur}/>
+              <Route path="/klantMain" component={KlantMain}/>
+
 
         <ScrollView style={styles.content}>
           <Route path="/project" render={()=><Project                 realmDatabase={this.ClientToDatabase}
  />}/>
 
-            <Route path="/klant" render={()=><Klant
+            <Route path="/addKlant" render={()=><AddKlant
                 form={this.state.form}
                 realmDatabase={this.ClientToDatabase}
                updateForm={this.handleFormUpdate}/>}/>
@@ -124,7 +127,7 @@ export default class App extends Component {
           <View style={styles.nav}>
             <Link
               style={styles.navItem}
-              to="/klant"
+              to="/klantMain"
               >
               <Text style={styles.navText}>Klant</Text>
             </Link>

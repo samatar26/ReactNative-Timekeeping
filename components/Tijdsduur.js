@@ -7,4 +7,4 @@ export const Tijdsduur = () => (
     <Text>Tijdsduur</Text>
 
   </View>
-)
+);

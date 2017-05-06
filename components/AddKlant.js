@@ -3,7 +3,7 @@ import { View, Text, StyleSheet, TextInput, TouchableOpacity } from "react-nativ
 import PropTypes from 'prop-types';
 
 
-export default class Klant extends Component {
+export default class AddKlant extends Component {
   render() {
     return (
       <View style={styles.header}>
@@ -52,7 +52,7 @@ export default class Klant extends Component {
                   />
                 <TouchableOpacity
                    style={styles.button}
-                   onPress={()=>{this.props.realmDatabase(this.props.form)}}
+                   onPress={()=>{this.props.realmDatabase(this.props.form);}}
                     >
                   <Text style={styles.buttonText}>Submit</Text>
                 </TouchableOpacity>
@@ -69,7 +69,6 @@ const styles = StyleSheet.create({
     flexDirection: "column",
     justifyContent: "flex-start",
     alignItems: "center",
-    backgroundColor: "yellow",
 
   },
   input: {
@@ -90,7 +89,7 @@ const styles = StyleSheet.create({
 
 });
 
-Klant.propTypes = {
+AddKlant.propTypes = {
   updateForm: PropTypes.func,
   realmDatabase: PropTypes.func
 };
