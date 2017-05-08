@@ -9,7 +9,7 @@ import {Tijdsduur } from "./components/index";
 import AddKlant from "./components/AddKlant.js";
 import Project from './components/Project.js';
 import {KlantMain} from './components/KlantMain.js';
-
+import {ViewKlant} from './components/ViewKlant.js';
 
 export default class App extends Component {
 
@@ -122,6 +122,7 @@ export default class App extends Component {
                 form={this.state.form}
                 realmDatabase={this.ClientToDatabase}
                updateForm={this.handleFormUpdate}/>}/>
+             <Route path="/viewKlant" component={ViewKlant}/>
 
           </ScrollView>
           <View style={styles.nav}>
