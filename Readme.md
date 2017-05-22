@@ -26,3 +26,8 @@ A foundational component for inputting text into the app via a keyboard. Props p
 returnKeyType?: enum('done', 'go', 'next', 'search', 'send', 'none', 'previous', 'default', 'emergency-call', 'google', 'join', 'route', 'yahoo')
 
 ```
+
+### ListView
+A core component designed for the efficient display of vertically scrolling lists of changing data. You'll need two things to effectively use this component:
+- A ListView.DataSource(it takes an object with a row has changed function which helps the ListView render efficiently)
+- renderRow function that returns a component that renders the row. The data for that row is passed as a prop to the function. 

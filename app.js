@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { View, Text, ScrollView, StyleSheet } from "react-native";
+import { View, Text, ScrollView, StyleSheet, ListView } from "react-native";
 
 import { NativeRouter, Route, Link } from "react-router-native";
 import realm from './database/Realm';
@@ -12,6 +12,8 @@ import {KlantMain} from './components/KlantMain.js';
 import {ViewKlant} from './components/ViewKlant.js';
 
 export default class App extends Component {
+
+  ds = new ListView.DataSource({rowHasChanged:(r1, r2) => r1 !== r2})
 
   state = {
     filter: 'home',
@@ -29,6 +31,7 @@ export default class App extends Component {
       woonplaats: '',
     },
     id:1,
+    dataSource: this.ds.cloneWithRows(Array.from(realm.objects('Klant'))),
 
 
 
@@ -113,7 +116,6 @@ export default class App extends Component {
             <Route path="/tijdsduur" component={Tijdsduur}/>
               <Route path="/klantMain" component={KlantMain}/>
 
-
         <ScrollView style={styles.content}>
           <Route path="/project" render={()=><Project                 realmDatabase={this.ClientToDatabase}
  />}/>
@@ -122,7 +124,10 @@ export default class App extends Component {
                 form={this.state.form}
                 realmDatabase={this.ClientToDatabase}
                updateForm={this.handleFormUpdate}/>}/>
-             <Route path="/viewKlant" component={ViewKlant}/>
+             <Route path="/viewKlant" render={()=><ListView
+                 dataSource={this.state.dataSource}
+                 renderRow={(data)=><ViewKlant {...data}/>}
+                 />}/>
 
           </ScrollView>
           <View style={styles.nav}>
