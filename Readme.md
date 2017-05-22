@@ -1,3 +1,14 @@
+### TimeManagement
+This is a mobile app which allows freelancers to record the time they spend working on different client's projects with minimal effort. It also provides them with a general overview of the total amount of time they have spent working on different projects.
+
+### Tech Stack
+- React-Native
+- React-Router
+- Realm
+
+
+### Learnings on React-Native
+
 ### AppRegistry
 
 The AppRegistry just tells React Native which component is the root one for the whole application.
